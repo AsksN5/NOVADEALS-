@@ -7,8 +7,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --accent1:#4a00e0; --accent2:#8e2de2; --accent3:#3fe0c5; --accent4:#00ffb0;
-  --violet: violet; --cardBG: rgba(255,255,255,0.08); --text:#fff; --bg-dark:#0f0f17;
+  --accent1:#4a00e0;
+  --accent2:#8e2de2;
+  --accent3:#3fe0c5;
+  --accent4:#00ffb0;
+  --text:#fff;
+  --bg-dark:#0f0f17;
+  --neon:#ff00ff;
+  --cardBG: rgba(255,255,255,0.08);
 }
 /* Reset */
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -26,7 +32,7 @@ body.light-mode .card{--cardBG: rgba(0,0,0,0.06);}
 /* Landing Page */
 #landingPage{position:fixed;inset:0;z-index:9998;display:flex;align-items:center;justify-content:center;background:var(--bg-dark);}
 .landingCenter{text-align:center;animation:fadeSlide 1s ease;padding:20px;}
-.landingCenter h1{font-size:44px;margin-bottom:10px;font-weight:800;text-shadow:0 0 8px #ff00ff,0 0 18px #ff00ff;}
+.landingCenter h1{font-size:44px;margin-bottom:10px;font-weight:800;color:var(--neon);text-shadow:0 0 10px var(--neon),0 0 20px var(--neon);}
 .landingCenter p{font-size:16px;opacity:0.95;margin-bottom:20px;}
 #enterBtn{padding:14px 32px;border-radius:999px;border:none;font-weight:700;background:#fff;color:var(--accent1);cursor:pointer;font-size:16px;box-shadow:0 8px 30px rgba(0,0,0,0.15);transition:transform .18s,box-shadow .18s;}
 #enterBtn:hover{transform:scale(1.05);box-shadow:0 12px 40px rgba(0,0,0,0.18);}
@@ -35,7 +41,7 @@ body.light-mode .card{--cardBG: rgba(0,0,0,0.06);}
 /* Header */
 header{width:calc(100%-24px);max-width:980px;margin:18px auto;padding:12px 18px;display:flex;justify-content:space-between;align-items:center;border-radius:12px;backdrop-filter:blur(8px);background: rgba(0,0,0,0.18);box-shadow:0 6px 18px rgba(0,0,0,0.18);}
 body.light-mode header{background:rgba(255,255,255,0.7);}
-.header-left h1{font-size:22px;font-weight:800;text-shadow:0 0 6px #ff00ff;}
+.header-left h1{font-size:22px;font-weight:800;color:var(--neon);text-shadow:0 0 6px var(--neon),0 0 12px var(--neon);}
 .header-left .slogan{font-size:12px;opacity:0.9;}
 .header-right{display:flex;align-items:center;gap:10px;font-size:13px;opacity:0.95;}
 .mode-toggle{padding:8px 10px;border-radius:10px;border:none;background:rgba(255,255,255,0.08);cursor:pointer;}
@@ -54,12 +60,12 @@ body.light-mode header{background:rgba(255,255,255,0.7);}
 
 /* Scroll Bar & BackTop */
 #scrollBar{position:fixed;top:0;left:0;height:4px;width:0%;background:linear-gradient(90deg,var(--accent1),var(--accent2));z-index:1200;}
-#backToTop{position:fixed;right:20px;bottom:22px;padding:10px 12px;border-radius:999px;background:var(--violet);color:#fff;border:none;cursor:pointer;box-shadow:0 8px 30px rgba(0,0,0,0.2);opacity:0;transform:translateY(8px);transition:opacity .25s,transform .25s;}
+#backToTop{position:fixed;right:20px;bottom:22px;padding:10px 12px;border-radius:999px;background:var(--neon);color:#fff;border:none;cursor:pointer;box-shadow:0 8px 30px rgba(0,0,0,0.2);opacity:0;transform:translateY(8px);transition:opacity .25s,transform .25s;}
 #backToTop.show{opacity:1;transform:translateY(0);}
 
 /* QR & Instagram */
 .qr-card{display:flex;flex-direction:column;align-items:center;gap:12px;padding:18px;border-radius:14px;background:var(--cardBG);}
-#qrBox{width:180px;height:180px;border-radius:50%;overflow:hidden;border:4px solid var(--violet);display:flex;align-items:center;justify-content:center;position:relative;animation:qrPulse 3s infinite;}
+#qrBox{width:180px;height:180px;border-radius:50%;overflow:hidden;border:4px solid var(--neon);display:flex;align-items:center;justify-content:center;position:relative;animation:qrPulse 3s infinite;}
 @keyframes qrPulse{0%{box-shadow:0 0 8px rgba(238,130,238,0.25)}50%{box-shadow:0 0 26px rgba(238,130,238,0.18)}100%{box-shadow:0 0 8px rgba(238,130,238,0.25);}}
 .inst-btn{display:inline-flex;align-items:center;gap:10px;padding:12px 22px;border-radius:999px;border:none;cursor:pointer;background:linear-gradient(135deg,var(--accent1),var(--accent2));color:#fff;font-weight:700;position:relative;overflow:hidden;}
 .inst-btn .ripple{position:absolute;border-radius:999px;transform:translate(-50%,-50%);background:rgba(255,255,255,0.18);pointer-events:none;width:6px;height:6px;opacity:0;transition:all .5s;}
@@ -118,7 +124,6 @@ header{flex-direction:column;gap:10px;align-items:center;}
 
 <div id="quotes">Providing ready-to-use project paths with a guaranteed plan.</div>
 
-<!-- Pages -->
 <section id="page1" class="page" style="display:block;">
   <h2 style="text-align:center;margin:12px;">OUR SERVICES</h2>
   <div class="card card-3d"><div class="card-3d-inner card">
@@ -170,18 +175,13 @@ header{flex-direction:column;gap:10px;align-items:center;}
 window.addEventListener('load', ()=>{
   setTimeout(()=> {
     document.getElementById('loadingScreen').style.display='none';
-    document.getElementById('landingPage').style.display='flex';
   },1500);
 });
 
 // Enter button
 document.getElementById('enterBtn').addEventListener('click', ()=>{
-  const landing = document.getElementById('landingPage');
-  landing.style.transition='opacity .6s'; landing.style.opacity=0;
-  setTimeout(()=>{
-      landing.style.display='none'; 
-      document.getElementById('content').style.display='block';
-  },650);
+  document.getElementById('landingPage').style.display='none';
+  document.getElementById('content').style.display='block';
 });
 
 // QR
@@ -264,12 +264,6 @@ window.addEventListener('scroll',()=>{
   document.getElementById('scrollBar').style.width=scrolled+'%';
 });
 backBtn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
-
-// Card 3D tilt
-const card3d=document.querySelectorAll('.card-3d');
-card3d.forEach(card=>{
-  const inner=card.querySelector('.card-3d-inner');
-  card.addEventListener('mousemove',e=>{
-    const rect=card.getBoundingClientRect();
-    const x=((e.clientX-rect.left)/rect.width-0.5)*20;
-    const y=((e.clientY-rect.top
+</script>
+</body>
+  </html>
